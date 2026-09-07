@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}" dir="{{ dir }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ app_name }} — {{ t.app_tagline }}</title>
+<meta name="description" content="{{ t.meta_description }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          aura: {
+            bg: '#0E1116',
+            surface: '#161B22',
+            surfacealt: '#1C232D',
+            border: '#2A3240',
+            gold: '#C9A15A',
+            teal: '#3FA796',
+            positive: '#59B37B',
+            risk: '#E2685A',
+            text: '#E7E9EE',
+            dim: '#97A0AF',
+          }
+        },
+        fontFamily: {
+          headline: ['"Space Grotesk"', '"IBM Plex Sans Arabic"', 'sans-serif'],
+          headlinear: ['"IBM Plex Sans Arabic"', '"Space Grotesk"', 'sans-serif'],
+          body: ['"Inter"', '"IBM Plex Sans Arabic"', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root {
+    color-scheme: dark;
+  }
+  body {
+    background-color: #0E1116;
+    background-image:
+      radial-gradient(circle at 12% 0%, rgba(201,161,90,0.08), transparent 42%),
+      radial-gradient(circle at 88% 18%, rgba(63,167,150,0.07), transparent 45%);
+  }
+  html[dir="rtl"] body { font-family: "IBM Plex Sans Arabic", "Inter", sans-serif; }
+  html[dir="ltr"] body { font-family: "Inter", "IBM Plex Sans Arabic", sans-serif; }
+  html[dir="rtl"] .font-headline { font-family: "IBM Plex Sans Arabic", "Space Grotesk", sans-serif; }
+
+  .hairline { border-color: #2A3240; }
+  .ticker-item + .ticker-item { border-inline-start: 1px solid #2A3240; }
+
+  ::selection { background: rgba(201,161,90,0.35); }
+
+  input[type="text"]::placeholder { color: #6B7280; }
+
+  select.aura-select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2397A0AF' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 1rem;
+  }
+  html[dir="rtl"] select.aura-select { background-position: left 0.9rem center; }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+  .live-dot { animation: pulse-dot 2.2s ease-in-out infinite; }
+
+  .fade-in { animation: fadeIn 0.5s ease both; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid #C9A15A;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .live-dot, .fade-in { animation: none !important; }
+  }
+</style>
+</head>
+<body class="min-h-screen text-aura-text font-body antialiased">
+{% block content %}{% endblock %}
+</body>
+</html>

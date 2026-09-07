@@ -1,0 +1,51 @@
+{
+  "app_name": "Aura Intel",
+  "app_tagline": "Intelijen pasar Indonesia, dalam satu dasbor",
+  "meta_description": "Platform intelijen pasar dan ekonomi untuk merchant digital dan perusahaan di Indonesia",
+
+  "hero_eyebrow": "Dasbor Intelijen Pasar",
+  "hero_title": "Pahami pasar Anda di Indonesia sebelum kompetitor Anda",
+  "hero_subtitle": "Masukkan kota dan produk untuk mendapatkan analisis harga, indeks permintaan, dan peta kompetitor secara langsung dalam hitungan detik.",
+
+  "form_city_label": "Kota",
+  "form_product_label": "Produk atau kategori",
+  "form_product_placeholder": "contoh: kopi kemasan, skincare...",
+  "form_language_label": "Bahasa",
+  "form_submit": "Jalankan analisis",
+  "form_quick_products": "Contoh cepat",
+
+  "live_badge": "Simulasi langsung",
+  "loading_text": "Menganalisis pasar...",
+  "error_generic": "Analisis tidak dapat diselesaikan. Silakan coba lagi.",
+
+  "section_overview": "Ringkasan pasar",
+  "label_avg_price": "Harga rata-rata",
+  "label_min_price": "Harga terendah",
+  "label_max_price": "Harga tertinggi",
+  "label_median_price": "Median",
+  "label_demand_index": "Indeks permintaan",
+  "label_saturation": "Saturasi pasar",
+  "label_competitors": "Kompetitor aktif",
+  "label_opportunity": "Skor peluang",
+
+  "section_trend": "Tren harga & permintaan 14 hari",
+  "trend_price_series": "Harga (IDR)",
+  "trend_demand_series": "Indeks permintaan",
+
+  "section_competitors": "Kompetitor aktif teratas",
+  "competitor_table_name": "Toko",
+  "competitor_table_price": "Harga",
+  "competitor_table_rating": "Rating",
+  "competitor_table_sales": "Penjualan (30 hari)",
+
+  "section_insight": "Analisis celah & rekomendasi",
+  "insight_high_demand_low_saturation": "Permintaan tinggi ({demand}/100) sementara saturasi pasar masih rendah ({saturation}/100) — ini celah yang jelas dan layak dimasuki segera dengan harga kompetitif sekitar Rp{price}.",
+  "insight_high_demand_high_saturation": "Permintaan tinggi ({demand}/100), tetapi persaingan juga padat ({competitors} penjual aktif). Untuk menang di sini dibutuhkan keunggulan jelas pada kualitas atau layanan, bukan sekadar harga.",
+  "insight_low_demand_low_saturation": "Permintaan saat ini masih rendah ({demand}/100) dan persaingan juga sedikit. Pasar ini mungkin masih tahap awal — uji coba terbatas lebih aman sebelum investasi besar.",
+  "insight_low_demand_high_saturation": "Permintaan rendah ({demand}/100) sementara pasokan sudah jenuh ({saturation}/100). Kategori ini saat ini berisiko lebih tinggi di kota ini.",
+  "insight_balanced_market": "Pasar relatif seimbang antara permintaan ({demand}/100) dan pasokan ({saturation}/100), dengan skor peluang {opportunity}/100 — posisikan diri secara cermat lewat kualitas atau strategi harga.",
+
+  "footer_disclaimer": "Angka yang ditampilkan adalah simulasi estimasi untuk keperluan eksplorasi dan perencanaan, bukan data harga langsung dari sumber eksternal.",
+  "footer_generated_at": "Simulasi terakhir diperbarui",
+  "currency_unit": "Rupiah Indonesia (IDR)"
+}

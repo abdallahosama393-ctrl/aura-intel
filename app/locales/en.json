@@ -1,0 +1,51 @@
+{
+  "app_name": "Aura Intel",
+  "app_tagline": "Indonesian market intelligence, in one dashboard",
+  "meta_description": "Market and economic intelligence platform for digital merchants and companies in Indonesia",
+
+  "hero_eyebrow": "Market Intelligence Dashboard",
+  "hero_title": "Understand your Indonesian market before your competitor does",
+  "hero_subtitle": "Enter a city and a product to get pricing analysis, a demand index, and a live competitor map in seconds.",
+
+  "form_city_label": "City",
+  "form_product_label": "Product or category",
+  "form_product_placeholder": "e.g. packaged coffee, skincare...",
+  "form_language_label": "Language",
+  "form_submit": "Run analysis",
+  "form_quick_products": "Quick examples",
+
+  "live_badge": "Live simulation",
+  "loading_text": "Analyzing the market...",
+  "error_generic": "The analysis could not be completed. Please try again.",
+
+  "section_overview": "Market overview",
+  "label_avg_price": "Average price",
+  "label_min_price": "Lowest price",
+  "label_max_price": "Highest price",
+  "label_median_price": "Median",
+  "label_demand_index": "Demand index",
+  "label_saturation": "Market saturation",
+  "label_competitors": "Active competitors",
+  "label_opportunity": "Opportunity score",
+
+  "section_trend": "14-day price & demand trend",
+  "trend_price_series": "Price (IDR)",
+  "trend_demand_series": "Demand index",
+
+  "section_competitors": "Top active competitors",
+  "competitor_table_name": "Store",
+  "competitor_table_price": "Price",
+  "competitor_table_rating": "Rating",
+  "competitor_table_sales": "Sales (last 30d)",
+
+  "section_insight": "Gap analysis & recommendation",
+  "insight_high_demand_low_saturation": "Demand is high ({demand}/100) while market saturation stays low ({saturation}/100) — a clear gap worth entering quickly around a competitive price near IDR {price}.",
+  "insight_high_demand_high_saturation": "Demand is high ({demand}/100), but competition is dense too ({competitors} active sellers). Winning here needs a clear edge in quality or service, not price alone.",
+  "insight_low_demand_low_saturation": "Demand is currently modest ({demand}/100) and competition is light as well. This may be an early-stage market — a limited pilot is safer before a larger investment.",
+  "insight_low_demand_high_saturation": "Demand is low ({demand}/100) while supply is saturated ({saturation}/100). This category currently carries higher risk in this city.",
+  "insight_balanced_market": "The market is fairly balanced between demand ({demand}/100) and supply ({saturation}/100), with an opportunity score of {opportunity}/100 — position carefully on quality or thoughtful pricing.",
+
+  "footer_disclaimer": "Figures shown are an estimated simulation for exploration and planning purposes, not live pricing from an external data source.",
+  "footer_generated_at": "Simulation last updated",
+  "currency_unit": "Indonesian Rupiah (IDR)"
+}

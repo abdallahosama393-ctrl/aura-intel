@@ -1,0 +1,51 @@
+{
+  "app_name": "Aura Intel",
+  "app_tagline": "ذكاء السوق الإندونيسي، في لوحة واحدة",
+  "meta_description": "منصة تحليل سوقي واقتصادي للمتاجر والشركات الرقمية في إندونيسيا",
+
+  "hero_eyebrow": "لوحة الذكاء السوقي",
+  "hero_title": "افهم سوقك الإندونيسي قبل أن يفهمه منافسك",
+  "hero_subtitle": "أدخل مدينة ومنتجًا لتحصل على تحليل أسعار، مؤشر طلب، وخريطة منافسين محدثة خلال ثوانٍ.",
+
+  "form_city_label": "المدينة",
+  "form_product_label": "المنتج أو الفئة",
+  "form_product_placeholder": "مثال: قهوة معلبة، عناية بالبشرة...",
+  "form_language_label": "اللغة",
+  "form_submit": "شغّل التحليل",
+  "form_quick_products": "أمثلة سريعة",
+
+  "live_badge": "محاكاة حيّة",
+  "loading_text": "جارٍ تحليل السوق...",
+  "error_generic": "تعذر إتمام التحليل، يرجى المحاولة مجددًا.",
+
+  "section_overview": "نظرة عامة على السوق",
+  "label_avg_price": "متوسط السعر",
+  "label_min_price": "أدنى سعر",
+  "label_max_price": "أعلى سعر",
+  "label_median_price": "الوسيط",
+  "label_demand_index": "مؤشر الطلب",
+  "label_saturation": "تشبع السوق",
+  "label_competitors": "عدد المنافسين",
+  "label_opportunity": "درجة الفرصة",
+
+  "section_trend": "اتجاه السعر والطلب خلال 14 يومًا",
+  "trend_price_series": "السعر (روبية)",
+  "trend_demand_series": "مؤشر الطلب",
+
+  "section_competitors": "أبرز المنافسين النشطين",
+  "competitor_table_name": "المتجر",
+  "competitor_table_price": "السعر",
+  "competitor_table_rating": "التقييم",
+  "competitor_table_sales": "مبيعات آخر 30 يومًا",
+
+  "section_insight": "تحليل الفجوة والتوصية",
+  "insight_high_demand_low_saturation": "طلب مرتفع ({demand}/100) مع تشبع منخفض في السوق ({saturation}/100) — هذه فجوة واضحة تستحق الدخول السريع بسعر تنافسي قريب من {price} روبية.",
+  "insight_high_demand_high_saturation": "الطلب مرتفع ({demand}/100) لكن المنافسة كثيفة أيضًا ({competitors} منافسًا نشطًا). النجاح هنا يتطلب تمايزًا واضحًا في الجودة أو الخدمة، لا المنافسة على السعر فقط.",
+  "insight_low_demand_low_saturation": "الطلب الحالي منخفض نسبيًا ({demand}/100) والمنافسة قليلة أيضًا. قد يكون السوق ناشئًا — يُنصح باختبار محدود قبل الاستثمار الكبير.",
+  "insight_low_demand_high_saturation": "طلب منخفض ({demand}/100) مع تشبع مرتفع في المعروض ({saturation}/100). هذه الفئة تحمل مخاطرة أعلى في هذه المدينة حاليًا.",
+  "insight_balanced_market": "السوق متوازن نسبيًا بين الطلب ({demand}/100) والمعروض ({saturation}/100)، بدرجة فرصة {opportunity}/100 — يُنصح بالتموضع بعناية على أساس الجودة أو التسعير المدروس.",
+
+  "footer_disclaimer": "الأرقام المعروضة هي محاكاة تقديرية لأغراض الاستكشاف والتخطيط، وليست تسعيرًا فعليًا من مصدر خارجي.",
+  "footer_generated_at": "آخر تحديث للمحاكاة",
+  "currency_unit": "روبية إندونيسية (IDR)"
+}

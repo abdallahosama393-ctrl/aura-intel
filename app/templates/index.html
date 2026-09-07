@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-6xl mx-auto px-5 sm:px-8 pb-24">
+
+  <!-- Top bar -->
+  <header class="flex items-center justify-between pt-8 pb-6">
+    <div class="flex items-center gap-2.5">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-aura-gold/15 border border-aura-gold/40">
+        <span class="h-2.5 w-2.5 rounded-full bg-aura-gold"></span>
+      </span>
+      <span class="font-headline text-lg font-semibold tracking-tight">{{ app_name }}</span>
+    </div>
+    <nav class="flex items-center gap-1.5" aria-label="language switch">
+      {% for code, meta in languages.items() %}
+        <a href="/?lang={{ code }}"
+           class="px-3 py-1.5 rounded-full text-sm border transition-colors focus-ring
+             {% if code == lang %} bg-aura-gold/15 border-aura-gold/50 text-aura-gold {% else %} border-aura-border text-aura-dim hover:text-aura-text hover:border-aura-dim {% endif %}">
+          {{ meta.label }}
+        </a>
+      {% endfor %}
+    </nav>
+  </header>
+
+  <!-- Hero / control surface -->
+  <section class="pt-6 pb-10 border-b hairline">
+    <span class="inline-block text-xs px-3 py-1 rounded-full border border-aura-border text-aura-dim mb-5">
+      {{ t.hero_eyebrow }}
+    </span>
+    <h1 class="font-headline text-3xl sm:text-[2.6rem] leading-[1.15] font-semibold max-w-2xl text-aura-text">
+      {{ t.hero_title }}
+    </h1>
+    <p class="mt-4 text-aura-dim max-w-xl text-[1.02rem] leading-relaxed">
+      {{ t.hero_subtitle }}
+    </p>
+
+    <form id="analyze-form" class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-end max-w-3xl">
+      <div class="flex-1 min-w-[10rem]">
+        <label for="city-select" class="block text-xs text-aura-dim mb-1.5">{{ t.form_city_label }}</label>
+        <select id="city-select" name="city"
+          class="aura-select w-full bg-aura-surface border border-aura-border rounded-lg px-3.5 py-2.5 text-sm focus-ring outline-none">
+          {% for key, meta in cities.items() %}
+            <option value="{{ key }}" {% if key == default_city_key %}selected{% endif %}>{{ meta.label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="flex-[1.4] min-w-[12rem]">
+        <label for="product-input" class="block text-xs text-aura-dim mb-1.5">{{ t.form_product_label }}</label>
+        <input id="product-input" name="product" type="text" value="{{ default_product }}"
+          placeholder="{{ t.form_product_placeholder }}"
+          class="w-full bg-aura-surface border border-aura-border rounded-lg px-3.5 py-2.5 text-sm focus-ring outline-none placeholder:text-aura-dim/70">
+      </div>
+      <button type="submit" id="submit-btn"
+        class="inline-flex items-center justify-center gap-2 bg-aura-gold text-[#1B140A] font-medium text-sm rounded-lg px-5 py-2.5 hover:brightness-110 active:brightness-95 transition focus-ring whitespace-nowrap">
+        <span>{{ t.form_submit }}</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="rtl:-scale-x-100">
+          <path d="M5 12h14M13 6l6 6-6 6"/>
+        </svg>
+      </button>
+    </form>
+
+    <div class="mt-4 flex flex-wrap items-center gap-2 text-xs text-aura-dim">
+      <span>{{ t.form_quick_products }}:</span>
+      {% for p in sample_products %}
+        <button type="button" data-quick-product="{{ p }}"
+          class="quick-chip px-2.5 py-1 rounded-full border border-aura-border hover:border-aura-gold/50 hover:text-aura-gold transition-colors focus-ring">
+          {{ p }}
+        </button>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Status strip -->
+  <div class="flex items-center justify-between py-4 text-xs text-aura-dim">
+    <div class="flex items-center gap-2">
+      <span class="live-dot h-2 w-2 rounded-full bg-aura-positive"></span>
+      <span>{{ t.live_badge }}</span>
+    </div>
+    <div id="result-meta">{{ t.footer_generated_at }}: <span id="generated-at">{{ initial_snapshot.generated_at }}</span></div>
+  </div>
+
+  <!-- KPI ticker rail -->
+  <section id="kpi-rail" class="grid grid-cols-2 sm:grid-cols-4 border-y hairline">
+    <div class="ticker-item px-1 sm:px-6 py-5">
+      <div class="text-xs text-aura-dim mb-1.5">{{ t.label_avg_price }}</div>
+      <div class="font-headline text-xl sm:text-2xl font-semibold" id="kpi-avg-price">Rp {{ "{:,}".format(initial_snapshot.avg_price).replace(",", ".") }}</div>
+    </div>
+    <div class="ticker-item px-1 sm:px-6 py-5">
+      <div class="text-xs text-aura-dim mb-1.5">{{ t.label_demand_index }}</div>
+      <div class="font-headline text-xl sm:text-2xl font-semibold text-aura-teal" id="kpi-demand">{{ initial_snapshot.demand_index }}<span class="text-sm text-aura-dim">/100</span></div>
+    </div>
+    <div class="ticker-item px-1 sm:px-6 py-5">
+      <div class="text-xs text-aura-dim mb-1.5">{{ t.label_saturation }}</div>
+      <div class="font-headline text-xl sm:text-2xl font-semibold" id="kpi-saturation">{{ initial_snapshot.market_saturation }}<span class="text-sm text-aura-dim">/100</span></div>
+    </div>
+    <div class="ticker-item px-1 sm:px-6 py-5">
+      <div class="text-xs text-aura-dim mb-1.5">{{ t.label_opportunity }}</div>
+      <div class="font-headline text-xl sm:text-2xl font-semibold text-aura-gold" id="kpi-opportunity">{{ initial_snapshot.opportunity_score }}<span class="text-sm text-aura-dim">/100</span></div>
+    </div>
+  </section>
+
+  <!-- Trend + Competitors -->
+  <section class="grid lg:grid-cols-[1.5fr_1fr] gap-8 py-10">
+    <div>
+      <h2 class="font-headline text-base font-semibold mb-1">{{ t.section_trend }}</h2>
+      <p class="text-xs text-aura-dim mb-4" id="trend-caption">
+        {{ default_city_label }} · {{ default_product }}
+      </p>
+      <div class="bg-aura-surface border border-aura-border rounded-xl p-4 sm:p-5">
+        <canvas id="trend-chart" height="220"></canvas>
+      </div>
+      <div class="flex gap-5 mt-3 text-xs text-aura-dim">
+        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-aura-gold inline-block"></span>{{ t.trend_price_series }}</span>
+        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-aura-teal inline-block"></span>{{ t.trend_demand_series }}</span>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="font-headline text-base font-semibold mb-1">{{ t.section_competitors }}</h2>
+      <p class="text-xs text-aura-dim mb-4">
+        <span id="competitor-count">{{ initial_snapshot.competitor_count }}</span> {{ t.label_competitors | lower }}
+      </p>
+      <ol id="competitor-list" class="divide-y hairline border border-aura-border rounded-xl overflow-hidden bg-aura-surface">
+        {% for c in initial_snapshot.competitors %}
+        <li class="flex items-center gap-3 px-4 py-3">
+          <span class="font-headline text-aura-dim text-sm w-4 text-center">{{ loop.index }}</span>
+          <div class="flex-1 min-w-0">
+            <div class="text-sm truncate">{{ c.name }}</div>
+            <div class="text-xs text-aura-dim">★ {{ c.rating }} · {{ c.sales_last_30d }} {{ t.competitor_table_sales }}</div>
+          </div>
+          <div class="text-sm font-medium whitespace-nowrap">Rp {{ "{:,}".format(c.price).replace(",", ".") }}</div>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Insight panel -->
+  <section class="py-4">
+    <h2 class="font-headline text-base font-semibold mb-3">{{ t.section_insight }}</h2>
+    <div id="insight-panel" class="rounded-xl border-s-4 border-aura-gold bg-aura-surface px-5 py-4 text-[0.95rem] leading-relaxed text-aura-text/90">
+      {{ initial_insight_text }}
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-10 pt-6 border-t hairline text-xs text-aura-dim leading-relaxed">
+    <p>{{ t.footer_disclaimer }}</p>
+    <p class="mt-1">{{ t.currency_unit }} · {{ app_name }}</p>
+  </footer>
+</div>
+
+<script>
+  window.__AURA__ = {
+    lang: {{ lang | tojson }},
+    dictionary: {{ t | tojson }},
+    initialSnapshot: {{ initial_snapshot | tojson }},
+  };
+</script>
+<script src="/static/js/app.js"></script>
+{% endblock %}
